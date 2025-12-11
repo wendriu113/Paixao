@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nosso Cantinho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --rose-100: #ffe4e6;
+        --rose-200: #fecdd3;
+        --rose-300: #fda4af;
+        --rose-400: #fb7185;
+      }
+
+      body {
+        min-height: 100vh;
+        background: radial-gradient(circle at 20% 20%, #ffe4e6 0, #fff 45%),
+          radial-gradient(circle at 80% 0%, #fce7f3 0, #fff 40%),
+          linear-gradient(135deg, #ffe4e6, #fdf2f8 35%, #f3e8ff);
+      }
+
+      .heart-fall {
+        position: absolute;
+        top: -60px;
+        color: var(--rose-200);
+        opacity: var(--opacity);
+        transform: translateY(-60px) scale(var(--scale));
+        left: var(--x);
+        animation: floatDown var(--duration) linear infinite;
+      }
+
+      @keyframes floatDown {
+        to {
+          transform: translateY(110vh) scale(var(--scale));
+          opacity: var(--opacity);
+        }
+      }
+
+      @keyframes bob {
+        0% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, -10px);
+        }
+        100% {
+          transform: translate(-50%, 0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center relative overflow-hidden"
+  >
+    <div
+      id="heart-layer"
+      class="absolute inset-0 overflow-hidden pointer-events-none"
+    ></div>
+
+    <main class="relative z-10 flex flex-col items-center text-center px-6">
+      <div
+        class="flex items-center justify-center w-24 h-24 rounded-full bg-white/70 shadow-lg backdrop-blur mb-8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="text-rose-400 w-16 h-16"
+        >
+          <path
+            d="M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z"
+          />
+        </svg>
+      </div>
+
+      <section class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl text-rose-600 mb-4 font-semibold">
+          Bem-vinda ao nosso cantinho especial ❤️
+        </h1>
+        <p class="text-lg md:text-xl text-rose-400 mb-12 max-w-2xl mx-auto">
+          Um lugar criado com amor para celebrar cada momento ao seu lado.
+        </p>
+
+        <a
+          href="/linha"
+          class="inline-flex items-center justify-center bg-gradient-to-r from-rose-400 to-pink-500 text-white px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-transform duration-200 hover:scale-105 active:scale-95"
+        >
+          Ver nossa história
+        </a>
+      </section>
+    </main>
+
+    <div
+      class="absolute bottom-10 left-1/2 -translate-x-1/2"
+      style="animation: bob 2s ease-in-out infinite"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="text-rose-300 w-10 h-10"
+      >
+        <path
+          d="M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z"
+        />
+      </svg>
+    </div>
+
+    <script>
+      const layer = document.getElementById("heart-layer");
+      const HEART_COUNT = 10;
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        const size = 20 + Math.random() * 30;
+        heart.className = "heart-fall";
+        heart.style.setProperty("--x", `${Math.random() * 100}%`);
+        heart.style.setProperty(
+          "--duration",
+          (10 + Math.random() * 10).toFixed(2) + "s"
+        );
+        heart.style.setProperty(
+          "--scale",
+          (0.6 + Math.random() * 0.7).toFixed(2)
+        );
+        heart.style.setProperty(
+          "--opacity",
+          (0.25 + Math.random() * 0.35).toFixed(2)
+        );
+        heart.innerHTML = `
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="${size}" height="${size}">
+						<path d="M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z" />
+					</svg>
+				`;
+        layer.appendChild(heart);
+      }
+
+      for (let i = 0; i < HEART_COUNT; i += 1) {
+        createHeart();
+      }
+    </script>
+  </body>
+</html>
