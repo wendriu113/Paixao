@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Motivos pelos quais eu te amo</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			:root {
+				--rose-50: #fff1f2;
+				--rose-100: #ffe4e6;
+				--rose-300: #fda4af;
+				--rose-400: #fb7185;
+			}
+
+			body {
+				background: linear-gradient(180deg, #f5f3ff, var(--rose-50));
+				min-height: 100vh;
+			}
+
+			.fade-up {
+				opacity: 0;
+				animation: fadeUp 0.6s ease forwards;
+			}
+
+			.fade-up[data-delay="1"] { animation-delay: 0.1s; }
+			.fade-up[data-delay="2"] { animation-delay: 0.2s; }
+			.fade-up[data-delay="3"] { animation-delay: 0.3s; }
+			.fade-up[data-delay="4"] { animation-delay: 0.4s; }
+			.fade-up[data-delay="5"] { animation-delay: 0.5s; }
+			.fade-up[data-delay="6"] { animation-delay: 0.6s; }
+			.fade-up[data-delay="7"] { animation-delay: 0.7s; }
+			.fade-up[data-delay="8"] { animation-delay: 0.8s; }
+			.fade-up[data-delay="9"] { animation-delay: 0.9s; }
+			.fade-up[data-delay="10"] { animation-delay: 1s; }
+			.fade-up[data-delay="11"] { animation-delay: 1.1s; }
+			.fade-up[data-delay="12"] { animation-delay: 1.2s; }
+
+			@keyframes fadeUp {
+				from { opacity: 0; transform: translateY(16px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+
+			@keyframes pulseHeart {
+				0% { transform: scale(1); }
+				50% { transform: scale(1.2); }
+				100% { transform: scale(1); }
+			}
+		</style>
+	</head>
+	<body class="min-h-screen py-12 px-4 md:px-8">
+		<div class="max-w-5xl mx-auto">
+			<div class="fade-up mb-12" data-delay="1">
+				<a href="/linha" class="inline-flex items-center gap-2 text-rose-400 hover:text-rose-600 transition-colors mb-6">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12l7.5-7.5M3 12h18" />
+					</svg>
+					Voltar
+				</a>
+
+				<div class="text-center">
+					<div class="w-14 h-14 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center" style="animation: pulseHeart 2s infinite;">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-rose-400 w-8 h-8">
+							<path d="M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z" />
+						</svg>
+					</div>
+					<h1 class="text-4xl md:text-5xl text-rose-600 mb-4">Motivos pelos quais eu te amo</h1>
+					<p class="text-rose-400">Existem infinitos motivos, mas aqui estão alguns deles</p>
+				</div>
+			</div>
+
+			<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+				<%- (() => {
+					const reasons = [
+						"Seu sorriso ilumina meus dias mais difíceis",
+						"A forma como você me entende sem eu precisar falar",
+						"Sua risada contagiante que faz tudo parecer melhor",
+						"O jeito carinhoso como você cuida de mim",
+						"Sua paciência e compreensão em todos os momentos",
+						"A cumplicidade que existe entre nós",
+						"Como você me apoia e acredita nos meus sonhos",
+						"Seus abraços que são meu lugar favorito no mundo",
+						"A forma única como você vê a vida",
+						"Por fazer cada dia ao seu lado ser especial",
+						"Sua bondade e generosidade com todos ao redor",
+						"O amor incondicional que você me dá",
+					];
+
+					return reasons
+						.map((reason, index) => `
+							<div class="bg-white rounded-2xl shadow-md p-6 border border-pink-100 flex items-start gap-4 fade-up" data-delay="${index + 1}">
+								<div class="flex-shrink-0 mt-1">
+									<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"text-rose-400 w-5 h-5\"><path d=\"M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z\" /></svg>
+								</div>
+								<p class="text-gray-700 flex-1">${reason}</p>
+							</div>
+						`)
+						.join("");
+				})() %>
+			</div>
+
+			<div class="fade-up text-center" data-delay="12">
+				<a
+					href="/surpresa"
+					class="bg-gradient-to-r from-rose-400 to-pink-500 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-transform duration-200 hover:scale-105 active:scale-95 inline-flex items-center gap-2"
+				>
+					Ver surpresa
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m13.5 4.5 7.5 7.5-7.5 7.5M3 12h18" />
+					</svg>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nossa Linha do Tempo</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			:root {
+				--rose-50: #fff1f2;
+				--rose-100: #ffe4e6;
+				--rose-300: #fda4af;
+				--rose-400: #fb7185;
+				--pink-300: #f9a8d4;
+				--purple-300: #d8b4fe;
+			}
+
+			body {
+				background: linear-gradient(180deg, var(--rose-50), #f5f3ff);
+				min-height: 100vh;
+			}
+
+			.fade-in {
+				opacity: 0;
+				animation: fadeUp 0.7s ease forwards;
+			}
+
+			.fade-in.delay-1 {
+				animation-delay: 0.2s;
+			}
+			.fade-in.delay-2 {
+				animation-delay: 0.4s;
+			}
+			.fade-in.delay-3 {
+				animation-delay: 0.6s;
+			}
+			.fade-in.delay-4 {
+				animation-delay: 0.8s;
+			}
+			.fade-in.delay-5 {
+				animation-delay: 1s;
+			}
+			.fade-in.delay-6 {
+				animation-delay: 1.2s;
+			}
+
+			@keyframes fadeUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes bob {
+				0% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+				100% {
+					transform: translateY(0);
+				}
+			}
+
+			.photo-frame {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 4 / 3;
+				overflow: hidden;
+				border-radius: 18px;
+				border: 3px solid var(--rose-300);
+				box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+				background: linear-gradient(135deg, var(--rose-100), #fff);
+			}
+
+			.photo-frame img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		</style>
+	</head>
+	<body class="min-h-screen py-12 px-4 md:px-8">
+		<div class="max-w-5xl mx-auto">
+			<div class="fade-in mb-12">
+				<a href="/" class="inline-flex items-center gap-2 text-rose-400 hover:text-rose-600 transition-colors mb-6">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12l7.5-7.5M3 12h18" />
+					</svg>
+					Voltar
+				</a>
+
+				<div class="text-center">
+					<div class="w-14 h-14 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center" style="animation: bob 2s ease-in-out infinite;">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-rose-400 w-8 h-8">
+							<path d="M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z" />
+						</svg>
+					</div>
+					<h1 class="text-4xl md:text-5xl text-rose-600 mb-4 font-semibold">Nossa História</h1>
+					<p class="text-rose-400">Cada momento ao seu lado é especial</p>
+				</div>
+			</div>
+
+			<div class="max-w-3xl mx-auto relative">
+				<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-rose-300 via-pink-300 to-purple-300 -translate-x-1/2"></div>
+
+				<%- (() => {
+					const placeholder = "https://placehold.co/640x480?text=Sua+foto+aqui";
+					const moments = [
+						{
+							date: " 4 de setembro, 2025",
+							title: "Nossa Primeira Conversa.",
+							description: "O dia em que nos começamos a conversar e tudo mudou. Foi incrível desde o primeiro instante.",
+							image: "/img/primeiraaparece.jpeg", // coloque o nome do arquivo que está em public/img
+						},
+						{
+							date: "9 de setembro, 2025",
+							title: "Primeiro Beijo e quando te pedi em namoro pela primeira vez",
+							description: "naquele banquinho especial que se sabe ksksk, aquele dia foi massa.",
+							image: "/img/primeiraftjunto.jpeg",
+						},
+						{
+							date: "3 de outubro, 2025",
+							title: "Primeira vez saindo juntos",
+							description: "Apos tanto pedir o cara pode sair junto se lembra? ksksk, mas graças ao atraso da sua mae naquele dia tudo deu certo ksksksk.",
+							image: "/img/quandosaimosjunto.jpeg",
+						},
+						{
+							date: "4 de outubro, 2025",
+							title: "Primeira \"festa\" juntos (Aniversário da escola)",
+							description: "Um dia depois de comprarmos as roupas, eu fui te buscar na escola porque você não tinha avisado sua mãe onde era kkkkk.",
+							image: "/img/nosnafesta.jpeg",
+						},
+						{
+							date: "9 de dezembro, 2025",
+							title: "Nosso Aniversário",
+							description: "Celebramos 3 meses de amor, cumplicidade e muitas risadas juntos.",
+							image: "/img/trabalho.jpeg",
+						},
+						{
+							date: "25 de Dezembro, 2025",
+							title: "Quem sabe o nosso Primeiro Natal Juntos",
+							description: "Para Compartilhamos a magia do Natal e a alegria de estar ao lado de quem amamos.",
+							image: "/img/natal.jpeg",
+						},
+						{
+							date: "Hoje e Sempre",
+							title: "Nosso Futuro",
+							description: "Cada dia é uma nova página da nossa história, escrita com amor e carinho. te amu nega.",
+							image: "/img/futuro.jpeg",
+						},
+					];
+
+					return moments
+						.map((moment, index) => {
+							const isEven = index % 2 === 0;
+							return `
+								<div class="relative flex items-start mb-16 flex-col md:flex-row ${isEven ? "" : "md:flex-row-reverse"} fade-in delay-${index + 1}">
+									<div class="absolute left-4 md:left-1/2 -translate-x-1/2 bg-white rounded-full p-2 border-4 border-rose-300 z-10">
+										<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"text-rose-400 w-5 h-5\"><path d=\"M12 21s-6.4-4.35-9.2-8.53C.5 9.6 1.28 6.2 3.76 4.42 6.24 2.64 9.2 3.5 12 6.25 14.8 3.5 17.76 2.64 20.24 4.42c2.48 1.78 3.26 5.18.96 8.05C18.4 16.65 12 21 12 21Z\" /></svg>
+									</div>
+
+									<div class="ml-16 md:ml-0 md:w-5/12 ${isEven ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"}">
+										<div class="bg-white rounded-2xl shadow-lg p-6 border border-pink-100 transition-transform duration-200 hover:scale-[1.02] space-y-3">
+											<div class="text-rose-400 text-sm">${moment.date}</div>
+											<h3 class="text-xl text-rose-600">${moment.title}</h3>
+											<p class="text-gray-600">${moment.description}</p>
+										</div>
+									</div>
+
+									<div class="mt-4 md:mt-0 ml-16 md:ml-0 md:w-5/12 ${isEven ? "md:ml-auto md:pl-8" : "md:mr-auto md:pr-8"}">
+										<div class="photo-frame">
+											<img src="${moment.image || placeholder}" alt="${moment.title}" />
+										</div>
+									</div>
+							</div>
+							`;
+						})
+						.join("");
+				})() %>
+			</div>
+
+			<div class="fade-in delay-6 text-center mt-16">
+				<a
+					href="/motivos"
+					class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-400 to-pink-500 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-transform duration-200 hover:scale-105 active:scale-95"
+				>
+					Próxima página
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m13.5 4.5 7.5 7.5-7.5 7.5M3 12h18" />
+					</svg>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>
